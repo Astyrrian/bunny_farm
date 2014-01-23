@@ -34,15 +34,15 @@ namespace terrains {
 	};*/
 
 	static const string astrTerrainType[] = { \
-		"dirt", \
-		"grass", \
-		"rock", \
-		"water", \
-		"hole", \
-		"lava" \
+		"d", \
+		"g", \
+		"r", \
+		"w", \
+		"h", \
+		"l" \
 	};
 	
-	static const int nTerrainTypeSize = astrTerrainType.size();
+	static const int nTerrainTypeSize = sizeof(astrTerrainType)/sizeof(string);
 
 	string getTerrain(int nTerrainNum) {
 		if (nTerrainNum >= nTerrainTypeSize) {
@@ -54,22 +54,38 @@ namespace terrains {
 
 };
 
-//void printFarm (
+unsigned int GetRandomNumber(int nLow, int nHigh); 
+
+void printFarm (farm *pFarm, const int nXSize, const int nYSize);
 
 int main() {
 	//Initialize the random number generator:
 	std::srand(RNG_SEED);
 	//Generate the farm:
-	/*farm[FARM_SIZE_X][FARM_SIZE_Y] myFarm;
-
+	farm myFarm[FARM_SIZE_X][FARM_SIZE_Y];
+	
 	for (int nX = 0; nX < FARM_SIZE_X; ++nX) {
 		for (int nY = 0; nY < FARM_SIZE_Y; ++nY) {
-		*/
-	cout << "Enter an integer" << endl;
-	int input;
-	cin >> input;
-	cout << terrains::getTerrain(input) << endl;
-
+			int nRand = GetRandomNumber(0, terrains::nTerrainTypeSize-1);
+			myFarm[nX][nY].strType = terrains::getTerrain(nRand);
+			myFarm[nX][nY].bOccupied = false;
+		}
+	}
+	printFarm(&myFarm[0][0], FARM_SIZE_X, FARM_SIZE_Y);
 	_getch();
 	return 0;
+}
+
+void printFarm (farm *pFarm, const int nXSize, const int nYSize) {
+	for (int nX = 0; nX < nXSize; ++nX) {
+		for (int nY = 0; nY < nYSize; ++nY) {
+			cout << (*pFarm).strType ;
+			pFarm++;
+		}
+		cout << endl;
+	}
+}
+
+unsigned int GetRandomNumber(int nLow, int nHigh) {
+    return (rand() % (nHigh - nLow + 1)) + nLow;
 }
