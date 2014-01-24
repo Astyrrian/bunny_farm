@@ -2,6 +2,7 @@
 #define __TILE_H
 
 #include <string>
+#include "bunny.h"
 
 struct tile {
 
@@ -16,6 +17,7 @@ struct tile {
 
 	//Only changed during simulation
 	bool bOccupied;
+	bunny* pBunny; // the bunny that is inhabiting this tile
 
 };
 

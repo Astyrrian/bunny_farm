@@ -37,6 +37,7 @@ void terrain::genTerrainAttr() {
 	grass.bPassable = true;
 	grass.nChance = 80;
 	grass.bOccupied = false;
+	grass.pBunny = NULL;
 	
 	tile mountain;
 	mountain.strName = "mountain";
@@ -45,6 +46,7 @@ void terrain::genTerrainAttr() {
 	mountain.bPassable = false;
 	mountain.nChance = 15;
 	mountain.bOccupied = false;
+	mountain.pBunny = NULL;
 
 	tile lava;
 	lava.strName = "lava";
@@ -53,6 +55,7 @@ void terrain::genTerrainAttr() {
 	lava.bPassable = true;
 	lava.nChance = 5;
 	lava.bOccupied = false;
+	lava.pBunny = NULL;
 
 	aTerrainType.push_back(grass);
 	aTerrainType.push_back(mountain);

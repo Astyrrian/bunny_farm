@@ -30,6 +30,8 @@ int main() {
 			int nRand = getRandomNumber(0, MAX_RAND_NUM);
 			farm myFarm(nRand, xSize, ySize);
 			myFarm.printFarm();
+			myFarm.createBunny(NULL,NULL);
+			myFarm.printFarm();
 			//cout << myFarm.getTile(0,0).strSymbol << endl;
 		} else {
 			cout << "GOODBYE!" << endl;
