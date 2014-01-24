@@ -16,18 +16,18 @@ private:
 	int nYSize;
 	terrain myTerrain;
 
-	unsigned int getRandomNumber(int , int ); 
+	unsigned int getRandomNumber(const int , const int ); 
 	void generateFarm();
 
 public:
 	farm();
-	farm(int nSeed); //default width/length, input RNG seed
-	farm(int nX,int nY); //input width/length, default RNG seed
-	farm(int nSeed, int nX, int nY); //input width/length and RNG seed
+	farm(const int nSeed); //default width/length, input RNG seed
+	farm(const int nX,const int nY); //input width/length, default RNG seed
+	farm(const int nSeed, const int nX, const int nY); //input width/length and RNG seed
 
 	int getSizeX() { return nXSize; }
 	int getSizeY() { return nYSize; }
-	tile getTile(int x, int y) ;
+	tile getTile(const int x, const int y) ;
 	//std::string getTerrain(int);
 	//std::string genTerrain();
 	void printFarm();

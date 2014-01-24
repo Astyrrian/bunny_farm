@@ -22,14 +22,14 @@ private:
 	int nTerrainTypeSize;
 	int nRNG_SEED;
 	
-	unsigned int getRandomNumber(int , int ); 
+	unsigned int getRandomNumber(const int , const int ); 
 	void genTerrainAttr();
 
 public:
 	terrain();
-	terrain(int);
+	terrain(const int);
 	int getSize() { return nTerrainTypeSize; }
-	void setSeed(int nSeed) { nRNG_SEED = nSeed; }
+	void setSeed(const int nSeed);
 	//std::string getTerrain(int);
 	tile genTerrain();
 

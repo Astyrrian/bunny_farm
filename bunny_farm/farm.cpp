@@ -13,7 +13,7 @@ farm::farm() {
 	generateFarm();
 }
 
-farm::farm(int nSeed) {
+farm::farm(const int nSeed) {
 	nRNG_SEED = nSeed;
 	nXSize = 10;
 	nYSize = 10;
@@ -21,7 +21,7 @@ farm::farm(int nSeed) {
 	generateFarm();
 }
 
-farm::farm(int nX, int nY) {
+farm::farm(const int nX, const int nY) {
 	nRNG_SEED = 0;
 	nXSize = nX;
 	nYSize = nY;
@@ -29,7 +29,7 @@ farm::farm(int nX, int nY) {
 	generateFarm();
 }
 
-farm::farm(int nSeed, int nX, int nY) {
+farm::farm(const int nSeed, const int nX, const int nY) {
 	nRNG_SEED = nSeed;
 	nXSize = nX;
 	nYSize = nY;
@@ -48,7 +48,7 @@ void farm::generateFarm() {
 
 }
 
-tile farm::getTile(int x, int y) {
+tile farm::getTile(const int x, const int y) {
 	x = std::max(0,std::min(x,nXSize));
 	y = std::max(0,std::min(y,nYSize));
 	return myFarm[y*nXSize+x];
@@ -67,6 +67,6 @@ void farm::printFarm() {
 	cout << endl;
 }
 
-unsigned int farm::getRandomNumber(int nLow, int nHigh) {
+unsigned int farm::getRandomNumber(const int nLow, const int nHigh) {
 	return (rand() % (nHigh - nLow + 1)) + nLow;
 }

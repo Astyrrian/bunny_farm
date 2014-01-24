@@ -14,12 +14,17 @@ terrain::terrain() {
 
 }
 
-terrain::terrain(int nRandSeed) {
+terrain::terrain(const int nRandSeed) {
 	//Populate the default terrain types:
 	genTerrainAttr();
 	nRNG_SEED = nRandSeed;
 	std::srand(terrain::nRNG_SEED);
 
+}
+
+void terrain::setSeed(const int nSeed) { 
+	nRNG_SEED = nSeed; 
+	std::srand(nRNG_SEED);
 }
 
 void terrain::genTerrainAttr() {
@@ -81,18 +86,18 @@ tile terrain::genTerrain() {
 	int nIdx = 0;
 	tile ter;
 	//std::cout << nRand << std::endl;
-	do {
+	while (terrain::anTerrainChance[nIdx] < nRand ) {
 		//TODO: make this a binary search to be faster
 		//std::cout << "  " << nIdx << "  :   " << terrain::anTerrainChance[nIdx] << std::endl;
 		nIdx++;
-	} while (terrain::anTerrainChance[nIdx-1] < nRand ) ;
-	//The correct index is nIdx - 1
-	ter = aTerrainType[nIdx-1];
+	} 
+	//The correct index is nIdx
+	ter = aTerrainType[nIdx];
 
 	return ter;
 
 }
 
-unsigned int terrain::getRandomNumber(int nLow, int nHigh) {
+unsigned int terrain::getRandomNumber(const int nLow, const int nHigh) {
 	return (rand() % (nHigh - nLow + 1)) + nLow;
 }
