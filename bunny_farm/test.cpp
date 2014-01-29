@@ -10,8 +10,7 @@ using std::endl;
 
 //#define SSTR(x) dynamic_cast <std::ostringstream&> (std::ostringstream()<<std::dec<<x).str()
 
-#define FARM_SIZE_X 50
-#define FARM_SIZE_Y 50
+
 #define RNG_SEED  3321
 #define MAX_RAND_NUM 10000
 
@@ -25,14 +24,34 @@ int main() {
 	while (1) {
 		//Generate the farm:
 		cout << "Enter X and Y:" ; cin >> xSize >> ySize;
-		
+		cin.get();
 		if ((xSize > 0) && (ySize > 0)) {
 			int nRand = getRandomNumber(0, MAX_RAND_NUM);
 			farm myFarm(nRand, xSize, ySize);
 			myFarm.printFarm();
+			cout << "\tStarting... (press any key)" ;
+			cin.get();
+			myFarm.createBunny(NULL,NULL);
+			myFarm.createBunny(NULL,NULL);
+			myFarm.createBunny(NULL,NULL);
 			myFarm.createBunny(NULL,NULL);
 			myFarm.printFarm();
-			//cout << myFarm.getTile(0,0).strSymbol << endl;
+
+			cout << "(press any key)";
+			cin.get();
+			int nContinue = 1;
+			while (nContinue > 0) {
+				myFarm.simTurn();
+				//cout << "DEBUG: Main - Done simTurn()" << endl;
+				myFarm.createBunny(NULL,NULL);
+				//cout << "DEBUG: Main - Done createBunny()" << endl;
+				myFarm.printFarm();
+				nContinue--;
+				if (nContinue == 0) {
+					cout << "Continue?  ";
+					cin >> nContinue;
+				}
+			}
 		} else {
 			cout << "GOODBYE!" << endl;
 			break;

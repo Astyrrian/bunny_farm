@@ -10,6 +10,61 @@
 
 using std::string;
 
+
+class bunny {
+private:
+	string strName;
+	string strGender;
+	int nAge;
+	int nBirthYear;
+
+	bunny* pMother;
+	bunny* pFather;
+	std::vector<bunny*> pOffSprings;
+	int nNumOffSprings;
+	string strSymbol;
+	//statuses:
+	bool bDead;
+	string strCauseOfDeath;
+	int nXCoord;
+	int nYCoord;
+
+	//private methods:
+	//unsigned int getRandomNumber(int , int ); 
+	
+	bunny(); //default constructor
+	
+
+public:
+	//~bunny(); //destructor
+	bunny(const string strNewName, const string strNewGender,\
+		bunny *pNewMother, bunny *pNewFather, const int nYear);
+	
+	//Getters:
+	string getName() { return strName; }
+	string getGender()  { return strGender; }
+	int    getAge()  { return nAge; }
+	bunny* getMother() { return pMother; }
+	bunny* getFather() { return pFather; }
+	std::vector<bunny*> getOffSprings() { return pOffSprings; }
+	int    getNumOffSprings() { return nNumOffSprings; }
+	bool   isDead()  { return bDead; }
+	string getCauseOfDeath() { return strCauseOfDeath; }
+	string getSymbol() { return strSymbol;}
+	int    getBirthYear() { return nBirthYear; }
+	void   getLocation(int *pnX, int *pnY);
+	
+	//Setters:
+	void setSymbol(string strNSym) { strSymbol = strNSym; }
+	void setLoc(const int nX, const int nY);
+
+	//Other methods:
+	void kill(const string strCause);
+	void age();
+	void addOffSpring(bunny* pNewOffSpring);
+	
+	bool checkAgeDeath(const double c, const double n, const int nCheckNum);
+	
 //bunny deathrate function:
 // int probabilityOfDeath = 1/(1+e^(-c*(x-n))) * 1000
 // where int n = the 50% chance threshold
@@ -26,50 +81,6 @@ using std::string;
 //  x = 30, p = 999, cp = 0
 
 
-class bunny {
-private:
-	string strName;
-	bool bMale;
-	int nAge;
-	bunny* pMother;
-	bunny* pFather;
-	std::vector<bunny*> pOffSprings;
-	int nNumOffSprings;
-	string strSymbol;
-	//statuses:
-	bool bDead;
-	string strCauseOfDeath;
-
-	//private methods:
-	unsigned int getRandomNumber(int , int ); 
-	
-	bunny(); //default constructor
-	
-
-public:
-	//~bunny(); //destructor
-	bunny(const string strNewName, const bool bNewMale,\
-		bunny *pNewMother, bunny *pNewFather);
-	
-	//Getters:
-	string getName() { return strName; }
-	bool   isMale()  { return bMale; }
-	int    getAge()  { return nAge; }
-	bunny* getMother() { return pMother; }
-	bunny* getFather() { return pFather; }
-	std::vector<bunny*> getOffSprings() { return pOffSprings; }
-	int    getNumOffSprings() { return nNumOffSprings; }
-	bool   isDead()  { return bDead; }
-	string getCauseOfDeath() { return strCauseOfDeath; }
-	string getSymbol() { return strSymbol;}
-
-	//Setters:
-	void setSymbol(string strNSym) { strSymbol = strNSym; }
-
-	//Other methods:
-	void kill(const string strCause);
-	void age();
-	void addOffSpring(bunny* pNewOffSpring);
 };
 
 #endif
